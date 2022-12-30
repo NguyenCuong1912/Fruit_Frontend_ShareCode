@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { createBrowserHistory } from 'history';
+import { Switch, Router } from 'react-router';
+import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
+import { _home } from './utils/Utils/configPath';
+import Home from './pages/Client/Home/Home';
 
-function App() {
+
+
+export const history = createBrowserHistory();
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router history={history}>
+      <Switch>
+        <HomeTemplate path={_home} exact Component={Home} />
+        {/* <HomeTemplate path={_cart} exact Component={Cart} />
+        <HomeTemplate path={`${_product}/:id`} exact Component={ProductList} />
+        <HomeTemplate path={`${_detail}/:id`} exact Component={ProductDetail} />
+        <HomeTemplate path={`${_account}${_edit}`} exact Component={UpdateAccount} />
+        <HomeTemplate path={`${_order}/:id`} exact Component={OrderHistory} />
 
-export default App;
+
+
+        <HomeTemplate path={_login} exact Component={Login} />
+        <HomeTemplate path={_register} exact Component={Register} />
+
+
+        <AdminTemplate path={`${_admin}${_account}`} exact Component={QuanLyAccount} />
+        <AdminTemplate path={`${_admin}${_account}${_add}`} exact Component={ThemAccount} />
+        <AdminTemplate path={`${_admin}${_account}${_edit}/:id`} exact Component={SuaAccount} />
+
+        <AdminTemplate path={`${_admin}${_cate}`} exact Component={QuanLyCategory} />
+        <AdminTemplate path={`${_admin}${_cate}${_add}`} exact Component={AddCategory} />
+        <AdminTemplate path={`${_admin}${_cate}${_edit}/:id`} exact Component={UpdateCategory} />
+
+        <AdminTemplate path={`${_admin}${_product}`} exact Component={QuanLyProduct} />
+        <AdminTemplate path={`${_admin}${_product}${_add}`} exact Component={ThemProduct} />
+        <AdminTemplate path={`${_admin}${_product}${_edit}/:id`} exact Component={SuaProduct} />
+
+        <AdminTemplate path={`${_admin}${_bill}`} exact Component={QuanLyBill} />
+        <AdminTemplate path={`${_admin}${_bill}${_detail}/:id`} exact Component={DetailBill} /> */}
+
+
+      </Switch>
+    </Router>
+  )
+}
