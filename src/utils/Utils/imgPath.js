@@ -11,6 +11,9 @@ export const _banner3 = '../img/banner3.jpg'
 export const _banner4 = '../img/banner4.jpg'
 export const _banner5 = '../img/banner5.png'
 
+export const _main1 = '../img/banner-main.jpg'
+export const _main2 = '../img/banner-main2.png'
+
 
 export const _link1 = '../img/banner-link1.jpg'
 export const _link2 = '../img/banner-link2.jpg'
