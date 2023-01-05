@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HomeSlick from '../../../components/HomeSlick/HomeSlick'
 import BannerLink from '../../../components/BannerLink/BannerLink'
 import Product from '../../../components/Product/Product'
 import { _main1, _main2 } from '../../../utils/Utils/imgPath'
+import { useSelector, useDispatch } from 'react-redux';
+import { GetAllProductAction } from '../../../redux/Actions/ManageProductActions'
 
 export default function Home() {
+    const dispatch = useDispatch();
+    const { lstProduct } = useSelector(state => state.ManageProductReducers);
+    useEffect(() => {
+        dispatch(GetAllProductAction())
+    }, [])
+
+    let productForeign = lstProduct.filter(function (item) {
+        return item.Origin !== 'Việt Nam'
+    })
+    const renderProduct1 = () => {
+        return productForeign.slice(0, 8).map((item, index) => {
+            return <Product key={index} product={item} />
+        })
+    }
+    let productVN = lstProduct.filter(function (item) {
+        return item.Origin === 'Việt Nam'
+    })
+    const renderProduct2 = () => {
+        return productVN.slice(0, 8).map((item, index) => {
+            return <Product key={index} product={item} />
+        })
+    }
+
     return (
         <div className='mt-36' style={{ backgroundColor: '#fffdf1' }}>
             <HomeSlick />
@@ -20,11 +45,7 @@ export default function Home() {
                         Là nhà cung cấp thực phẩm tươi sạch hàng đầu khu vực phía bắc
                     </div>
                     <div className='grid grid-cols-4 my-8'>
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
+                        {renderProduct1()}
                     </div>
                     <div className='text-center my-4'>
                         <button className='border py-2 px-8 border-green-500 rounded-3xl text-green-500 bg-white font-medium text-base hover:bg-green-500 hover:text-white'>
@@ -48,11 +69,7 @@ export default function Home() {
                         Có hàng ngàn mẫu hoa quả tươi đủ loại cho bạn chọn!
                     </div>
                     <div className='grid grid-cols-4 my-8'>
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
+                        {renderProduct2()}
                     </div>
                     <div className='text-center my-4'>
                         <button className='border py-2 px-8 border-green-500 rounded-3xl text-green-500 bg-white font-medium text-base hover:bg-green-500 hover:text-white'>

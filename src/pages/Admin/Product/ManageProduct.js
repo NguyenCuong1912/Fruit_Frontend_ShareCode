@@ -52,6 +52,17 @@ export default function ManageProduct() {
             width: '10%',
         },
         {
+            title: 'Xuất xứ',
+            dataIndex: 'Origin',
+            width: '10%',
+        },
+        {
+            title: 'Đơn vị tính',
+            dataIndex: 'Unit',
+            width: '5%',
+        },
+
+        {
             title: 'Hình ảnh',
             dataIndex: 'ProductImage',
             render: (text, item) => {

@@ -35,6 +35,8 @@ export default function UpdateProduct(props) {
         initialValues: {
             Category_ID: detailProduct.Category_ID,
             ProductName: detailProduct.ProductName,
+            Origin: detailProduct.Origin,
+            Unit: detailProduct.Unit,
             Price: detailProduct.Price,
             Discount: detailProduct.Discount,
             Description: detailProduct.Description,
@@ -45,6 +47,12 @@ export default function UpdateProduct(props) {
                 .required("Không được trống !"),
 
             ProductName: Yup.string()
+                .required("Không được trống !"),
+
+            Origin: Yup.string()
+                .required("Không được trống !"),
+
+            Unit: Yup.string()
                 .required("Không được trống !"),
 
             Price: Yup.number()
@@ -98,14 +106,14 @@ export default function UpdateProduct(props) {
         <Fragment>
             <div>
                 <div>
-                    <button type='button' title='Trở về trang sản phẩm' className='text-4xl text-teal-500 hover:text-teal-700' onClick={() => {
+                    <button type='button' title='Trở về trang sản phẩm' className='text-4xl text-green-500 hover:text-green-700' onClick={() => {
                         history.push(`${_admin}${_product}`)
                     }}>
                         <BsBackspace />
 
                     </button>
                 </div>
-                <h1 className='text-center text-4xl font-bold text-teal-500'>Cập nhật sản phẩm</h1>
+                <h1 className='text-center text-4xl font-bold text-green-500'>Cập nhật sản phẩm</h1>
                 <form onSubmit={formik.handleSubmit}>
                     <div className='grid grid-cols-7'>
                         <div className='col-start-2 col-span-2 mr-4'>
@@ -123,25 +131,28 @@ export default function UpdateProduct(props) {
                             <div className='my-4'>
                                 <div>Tên sản phẩm:</div>
                                 <input type='text' name='ProductName'
-                                    onChange={formik.handleChange} value={formik.values.ProductName} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-teal-500 focus:outline-none focus:border focus:border-teal-500' placeholder='Tên sản phẩm...' />
+                                    onChange={formik.handleChange} value={formik.values.ProductName} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-green-500 focus:outline-none focus:border focus:border-green-500' placeholder='Tên sản phẩm...' />
                                 {formik.errors.ProductName && formik.touched.ProductName && (
                                     <p className='m-0 mt-1 text-red-600'>{formik.errors.ProductName}</p>
                                 )}
                             </div>
                             <div className='my-4'>
-                                <div>Giá tiền:</div>
-                                <input type='number' name='Price' onChange={formik.handleChange} value={formik.values.Price} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-teal-500 focus:outline-none focus:border focus:border-teal-500' placeholder='Giá tiền...' />
-                                {formik.errors.Price && formik.touched.Price && (
-                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Price}</p>
+                                <div>Xuất xứ:</div>
+                                <input type='text' name='Origin'
+                                    onChange={formik.handleChange} value={formik.values.Origin} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-green-500 focus:outline-none focus:border focus:border-green-500' placeholder='Xuất xứ...' />
+                                {formik.errors.Origin && formik.touched.Origin && (
+                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Origin}</p>
                                 )}
                             </div>
                             <div className='my-4'>
-                                <div>Ưu đãi:</div>
-                                <input type='number' name='Discount' onChange={formik.handleChange} value={formik.values.Discount} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-teal-500 focus:outline-none focus:border focus:border-teal-500' placeholder='Ưu đãi...' />
-                                {formik.errors.Discount && formik.touched.Discount && (
-                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Discount}</p>
+                                <div>Đơn vị tính:</div>
+                                <input type='text' name='Unit'
+                                    onChange={formik.handleChange} value={formik.values.Unit} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-green-500 focus:outline-none focus:border focus:border-green-500' placeholder='Đơn vị tính...' />
+                                {formik.errors.Unit && formik.touched.Unit && (
+                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Unit}</p>
                                 )}
                             </div>
+
                             <div className='my-4'>
                                 <span className='mr-2'>Hình ảnh:</span>
                                 <input type='file' onChange={handleChangeFile} accept='image/jpeg, image/jpg, image/png' />
@@ -151,6 +162,20 @@ export default function UpdateProduct(props) {
                             </div>
                         </div>
                         <div className='col-span-3 ml-4'>
+                            <div className='my-4'>
+                                <div>Giá tiền:</div>
+                                <input type='number' name='Price' onChange={formik.handleChange} value={formik.values.Price} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-green-500 focus:outline-none focus:border focus:border-green-500' placeholder='Giá tiền...' />
+                                {formik.errors.Price && formik.touched.Price && (
+                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Price}</p>
+                                )}
+                            </div>
+                            <div className='my-4'>
+                                <div>Ưu đãi:</div>
+                                <input type='number' name='Discount' onChange={formik.handleChange} value={formik.values.Discount} className='p-2 px-4 border w-2/3 rounded drop-shadow-lg hover:border-green-500 focus:outline-none focus:border focus:border-green-500' placeholder='Ưu đãi...' />
+                                {formik.errors.Discount && formik.touched.Discount && (
+                                    <p className='m-0 mt-1 text-red-600'>{formik.errors.Discount}</p>
+                                )}
+                            </div>
                             <div className='my-4'>
                                 <div>Mô tả:</div>
                                 <TextArea name='Description' onChange={formik.handleChange} value={formik.values.Description} rows={9} style={{ boxShadow: 'rgb(0 0 0 / 10%) 0px 10px 25px -5px, rgb(0 0 0 / 4%) 0px 10px 10px -5px' }} />
@@ -162,7 +187,7 @@ export default function UpdateProduct(props) {
 
                     </div>
                     <div className='text-center'>
-                        <button type='submit' className='text-center p-3 border border-teal-600 w-36 text-xl font-bold rounded text-teal-500 hover:bg-teal-600 hover:text-white'>Cập nhật</button>
+                        <button type='submit' className='text-center p-3 border border-green-600 w-36 text-xl font-bold rounded text-green-500 hover:bg-green-600 hover:text-white'>Cập nhật</button>
                     </div>
                 </form>
 
