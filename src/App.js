@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserHistory } from 'history';
 import { Switch, Router } from 'react-router';
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
-import { _account, _add, _admin, _cate, _edit, _home, _login, _product, _register } from './utils/Utils/configPath';
+import { _account, _add, _admin, _bill, _cart, _cate, _detail, _edit, _home, _login, _order, _product, _register } from './utils/Utils/configPath';
 import Home from './pages/Client/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -16,6 +16,13 @@ import UpdateCategory from './pages/Admin/Category/UpdateCategory';
 import ManageProduct from './pages/Admin/Product/ManageProduct';
 import AddProduct from './pages/Admin/Product/AddProduct';
 import UpdateProduct from './pages/Admin/Product/UpdateProduct';
+import Cart from './pages/Client/Cart/Cart';
+import ManageBill from './pages/Admin/Bill/ManageBill';
+import DetailBill from './pages/Admin/Bill/DetailBill';
+import OrderHistory from './pages/Client/User/OrderHistory';
+import UpdateUser from './pages/Client/User/UpdateUser';
+import ProductList from './pages/Client/Product/ProductList';
+import ProductDetail from './pages/Client/Product/ProductDetail';
 
 
 
@@ -26,11 +33,11 @@ export default function App() {
     <Router history={history}>
       <Switch>
         <HomeTemplate path={_home} exact Component={Home} />
-        {/* <HomeTemplate path={_cart} exact Component={Cart} /> */}
-        {/* <HomeTemplate path={`${_product}/:id`} exact Component={ProductList} /> */}
-        {/* <HomeTemplate path={`${_detail}/:id`} exact Component={ProductDetail} /> */}
-        {/* <HomeTemplate path={`${_account}${_edit}`} exact Component={UpdateAccount} /> */}
-        {/* <HomeTemplate path={`${_order}/:id`} exact Component={OrderHistory} /> */}
+        <HomeTemplate path={_cart} exact Component={Cart} />
+        <HomeTemplate path={`${_product}/:id`} exact Component={ProductList} />
+        <HomeTemplate path={`${_detail}/:id`} exact Component={ProductDetail} />
+        <HomeTemplate path={`${_account}${_edit}`} exact Component={UpdateUser} />
+        <HomeTemplate path={`${_order}/:id`} exact Component={OrderHistory} />
 
 
 
@@ -50,8 +57,8 @@ export default function App() {
         <AdminTemplate path={`${_admin}${_product}${_add}`} exact Component={AddProduct} />
         <AdminTemplate path={`${_admin}${_product}${_edit}/:id`} exact Component={UpdateProduct} />
 
-        {/* <AdminTemplate path={`${_admin}${_bill}`} exact Component={QuanLyBill} /> */}
-        {/* <AdminTemplate path={`${_admin}${_bill}${_detail}/:id`} exact Component={DetailBill} /> */}
+        <AdminTemplate path={`${_admin}${_bill}`} exact Component={ManageBill} />
+        <AdminTemplate path={`${_admin}${_bill}${_detail}/:id`} exact Component={DetailBill} />
 
 
       </Switch>

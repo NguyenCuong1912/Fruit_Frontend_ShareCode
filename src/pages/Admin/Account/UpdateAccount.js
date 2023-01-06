@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import { history } from '../../../App';
 import { _account, _admin } from '../../../utils/Utils/configPath';
-import { BsBackspace } from 'react-icons/bs';
+import { BsArrowReturnLeft } from 'react-icons/bs';
 import { Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetDetailUserAction, UpdateUserAction } from '../../../redux/Actions/ManageAccountActions';
@@ -60,11 +60,10 @@ export default function UpdateAccount(props) {
         <Fragment>
             <div className='grid grid-cols-7'>
                 <div>
-                    <button type='button' title='Trở về trang tài khoản' className='text-4xl text-green-500 hover:text-green-700' onClick={() => {
+                    <button type='button' title='Trở về trang tài khoản' className='text-4xl text-green-500 hover:text-green-700 border px-3 py-1 rounded border-green-500' onClick={() => {
                         history.push(`${_admin}${_account}`)
                     }}>
-                        <BsBackspace />
-
+                        <BsArrowReturnLeft />
                     </button>
                 </div>
                 <div className='col-span-3 col-start-3 mt-16 h-full rounded-lg shadow-2xl bg-white p-4'>

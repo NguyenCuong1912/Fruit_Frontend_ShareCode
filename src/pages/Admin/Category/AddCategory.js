@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { history } from '../../../App';
 import { _admin, _cate } from '../../../utils/Utils/configPath';
-import { BsBackspace } from 'react-icons/bs';
+import { BsArrowReturnLeft } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -26,11 +26,10 @@ export default function AddCategory() {
         <Fragment>
             <div className='grid grid-cols-7'>
                 <div>
-                    <button type='button' title='Trở về trang loại sản phẩm' className='text-4xl text-green-500 hover:text-green-700' onClick={() => {
+                    <button type='button' title='Trở về trang loại sản phẩm' className='text-4xl text-green-500 hover:text-green-700 border px-3 py-1 rounded border-green-500' onClick={() => {
                         history.push(`${_admin}${_cate}`)
                     }}>
-                        <BsBackspace />
-
+                        <BsArrowReturnLeft />
                     </button>
                 </div>
                 <div className='col-span-3 col-start-3 mt-32 h-72 rounded-lg shadow-2xl bg-white p-4'>

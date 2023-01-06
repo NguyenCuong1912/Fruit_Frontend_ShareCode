@@ -4,7 +4,7 @@ import React, { Fragment, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import { _logo } from '../../../utils/Utils/imgPath';
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShopping } from "react-icons/ai";
-import { _account, _edit, _home, _login, _order, _product } from '../../../utils/Utils/configPath';
+import { _account, _cart, _edit, _home, _login, _order, _product } from '../../../utils/Utils/configPath';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetAllCateAction } from '../../../redux/Actions/ManageCategoryActions';
 import { Dropdown, Menu, Space } from 'antd';
@@ -17,10 +17,17 @@ export default function Header() {
     const dispatch = useDispatch();
     const { lstCate } = useSelector(state => state.ManageCategoryReducers);
     const { userLogin } = useSelector(state => state.ManageAccountReducers);
+    const { cart } = useSelector(state => state.ManageCartReducers);
 
     useEffect(() => {
         dispatch(GetAllCateAction())
     }, [])
+
+    let number = 0;
+    cart?.forEach(element => {
+        number += element.Quantity
+    })
+
     const productCate = (
         <Menu>
             {lstCate?.map((cate, index) => {
@@ -28,7 +35,7 @@ export default function Header() {
                     <Menu.Item key={cate.id}>
                         <div onClick={() => {
                             history.push(`${_product}/${cate.id}`)
-                        }} className='pr-20 text-base'>{cate.CategoryName}</div>
+                        }} className='pr-20 text-base hover:text-green-500 hover:font-bold'>{cate.CategoryName}</div>
                     </Menu.Item>
                 </Fragment>
             })}
@@ -143,8 +150,9 @@ export default function Header() {
                             <NavLink to='' className='text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
                                 Liên hệ
                             </NavLink>
-                            <NavLink to=''>
+                            <NavLink to={_cart} className='flex'>
                                 <AiOutlineShopping className='ml-4 text-3xl text-black hover:text-green-600' />
+                                <span className='text-base text-red-500 -mt-1'>({number})</span>
                             </NavLink>
                         </div>
                     </div>

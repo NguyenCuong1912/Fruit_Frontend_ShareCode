@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { history } from '../../../App';
 import { _admin, _product } from '../../../utils/Utils/configPath';
-import { BsBackspace } from 'react-icons/bs';
+import { BsArrowReturnLeft } from 'react-icons/bs';
 import { Input, Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAllCateAction } from '../../../redux/Actions/ManageCategoryActions';
@@ -98,11 +98,10 @@ export default function AddProduct() {
         <Fragment>
             <div>
                 <div>
-                    <button type='button' title='Trở về trang sản phẩm' className='text-4xl text-green-500 hover:text-green-700' onClick={() => {
+                    <button type='button' title='Trở về trang sản phẩm' className='text-4xl text-green-500 hover:text-green-700 border px-3 py-1 rounded border-green-500' onClick={() => {
                         history.push(`${_admin}${_product}`)
                     }}>
-                        <BsBackspace />
-
+                        <BsArrowReturnLeft />
                     </button>
                 </div>
                 <h1 className='text-center text-4xl font-bold text-green-500'>Thêm sản phẩm</h1>
