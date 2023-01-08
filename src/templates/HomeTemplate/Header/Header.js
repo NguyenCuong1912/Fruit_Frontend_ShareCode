@@ -131,9 +131,9 @@ export default function Header() {
                                 Trang chủ
                             </NavLink>
 
-                            <div className='text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
+                            <div className='cursor-pointer text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
                                 <Dropdown overlay={productCate}>
-                                    <div className='text-black hover:text-teal-500' onClick={(e) => e.preventDefault()}>
+                                    <div className='text-black hover:text-white' onClick={(e) => e.preventDefault()}>
                                         <Space>
                                             Sản phẩm
                                             <AiOutlineCaretDown />
