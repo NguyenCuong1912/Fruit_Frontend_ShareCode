@@ -33,9 +33,9 @@ export default function Header() {
             {lstCate?.map((cate, index) => {
                 return <Fragment key={index}>
                     <Menu.Item key={cate.id}>
-                        <div onClick={() => {
+                        <button onClick={() => {
                             history.push(`${_product}/${cate.id}`)
-                        }} className='pr-20 text-base hover:text-green-500 hover:font-bold'>{cate.CategoryName}</div>
+                        }} className='pr-20 text-base hover:text-green-500 hover:font-bold'>{cate.CategoryName}</button>
                     </Menu.Item>
                 </Fragment>
             })}
@@ -131,16 +131,16 @@ export default function Header() {
                                 Trang chủ
                             </NavLink>
 
-                            <NavLink to='' className='text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
+                            <div className='text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
                                 <Dropdown overlay={productCate}>
-                                    <NavLink to='' className='text-black hover:text-teal-500' onClick={(e) => e.preventDefault()}>
+                                    <div className='text-black hover:text-teal-500' onClick={(e) => e.preventDefault()}>
                                         <Space>
                                             Sản phẩm
                                             <AiOutlineCaretDown />
                                         </Space>
-                                    </NavLink>
+                                    </div>
                                 </Dropdown>
-                            </NavLink>
+                            </div>
                             <NavLink to='' className='text-black text-base px-2 py-1 mx-2 font-medium rounded-full hover:bg-green-600 hover:text-white focus:bg-green-700 focus:text-white'>
                                 Giới thiệu
                             </NavLink>
