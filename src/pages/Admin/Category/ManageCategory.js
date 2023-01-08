@@ -10,7 +10,7 @@ import { DeleteCate, GetAllCateAction } from './../../../redux/Actions/ManageCat
 
 export default function ManageCategory() {
     const { Search } = Input;
-    const onSearch = (value) => console.log(value);
+
 
     const dispatch = useDispatch();
 
@@ -65,9 +65,6 @@ export default function ManageCategory() {
                     <button type='button' className='border-2 border-green-700 rounded w-24 h-10 text-lg font-bold text-green-500 hover:text-white hover:bg-green-600' onClick={() => {
                         history.push(`${_admin}${_cate}${_add}`)
                     }}>Thêm </button>
-                    <div className='w-1/2'>
-                        <Search size='large' placeholder="Bạn muốn tìm gì?..." onSearch={onSearch} enterButton />
-                    </div>
                 </div>
                 <Table dataSource={lstCate} columns={columns} rowKey='id' />;
             </div>
